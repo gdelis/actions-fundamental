@@ -1,6 +1,4 @@
 name: Output context
-description: Test GitHub Actions
-author: gdelis1989@gmail.com
 
 # Event triggers
 on:
@@ -17,7 +15,7 @@ jobs:
     steps:
       # This step will output the context and env variables available to the workflow
       - name: Show context
-        uses: actions/github-script@v4
+        uses: actions/github-script@v5.0.0
         with:
           script: |            
             core.startGroup('Context');
@@ -35,4 +33,7 @@ jobs:
       # This step runs a shell command on the runner machine
       - name: Run a shell command
         run: echo "Hello world"
+
+      - name: Display GitHub Owner
+        run: echo $GITHUB_REPOSITORY_OWNER
     
