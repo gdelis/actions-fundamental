@@ -5,8 +5,11 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
   pull_request:
+    branches: [master, main]
     types:
-      - "opened"
+      - opened
+      - reopened
+      - review_requested
   
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -42,4 +45,4 @@ jobs:
         run: echo $GITHUB_REPOSITORY_OWNER
     
 
-    
+
