@@ -3,6 +3,10 @@ name: Output context
 # Event triggers
 on:
   workflow_dispatch:
+  push:
+    branches: [master, main]
+    paths-ignore:
+      - ".github/workflows/**"
   pull_request:
     branches: [master, main]
     types:
@@ -10,10 +14,10 @@ on:
       - reopened
       - review_requested
       - edited
-  push:
-    branches: [master, main]
-    paths-ignore:
-      - ".github/workflows/**"
+  pull_request_review:
+    types:
+      - submitted
+      - edited
   
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
