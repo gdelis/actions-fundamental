@@ -23,6 +23,15 @@ jobs:
 
       - name: Install dependencies
         run: echo "install dependencies"
+
+  zip:
+    name: Create zip file
+    steps:
+      - run: |
+            echo pwd
+            ls -ltr
+            
+
   
   test:
     name: Test image
