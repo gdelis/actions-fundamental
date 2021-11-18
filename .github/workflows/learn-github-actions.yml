@@ -29,8 +29,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-            echo pwd
+            pwd
             ls -ltr
+            zip -r ${{github.sha}}.zip .
 
   
   test:
