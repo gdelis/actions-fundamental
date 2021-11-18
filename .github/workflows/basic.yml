@@ -2,11 +2,22 @@ name: Output context
 
 # Event triggers
 on:
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  push:
+    branches: [master, main]
+    paths-ignore:
+      - ".github/workflows/**"
   pull_request:
+    branches: [master, main]
     types:
-      - "opened"
+      - opened
+      - reopened
+      - review_requested
+      - edited
+  pull_request_review:
+    types:
+      - submitted
+      - edited
   
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -41,3 +52,5 @@ jobs:
       - name: Display GitHub Owner
         run: echo $GITHUB_REPOSITORY_OWNER
     
+
+
