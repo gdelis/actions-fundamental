@@ -34,6 +34,13 @@ jobs:
             ls -ltr
             zip -r ${{github.sha}}.zip .
 
+  archieve-artifact:
+    name: Archive artifact
+    needs: [zip]
+    uses: actions/upload-artifact@v2
+    with: 
+      name: zipped-bundle
+      path: ${{githubsha}}.zip
   
   test:
     name: Test image
