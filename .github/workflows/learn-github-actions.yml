@@ -30,6 +30,7 @@ jobs:
     steps:
       - run: |
             pwd
+            touch test.txt
             ls -ltr
             zip -r ${{github.sha}}.zip .
 
