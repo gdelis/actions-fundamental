@@ -33,12 +33,12 @@ jobs:
             touch test.txt
             ls -ltr
             zip -r ${{github.sha}}.zip .
-            
+
       - name: Archive artifact
         uses: actions/upload-artifact@v2
         with: 
           name: zipped-bundle
-          path: ${{githubsha}}.zip
+          path: ${{github.sha}}.zip
   
   test:
     name: Test image
