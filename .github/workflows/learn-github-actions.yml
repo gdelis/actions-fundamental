@@ -16,7 +16,7 @@ on:
 jobs:
   build:
     name: Build image
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Pull code
         uses: actions/checkout@v2
@@ -26,16 +26,16 @@ jobs:
 
   zip:
     name: Create zip file
+    runs-on: ubuntu-latest
     steps:
       - run: |
             echo pwd
             ls -ltr
-            
 
   
   test:
     name: Test image
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs: [build]
     steps:
       - name: Unit Testing
@@ -43,7 +43,7 @@ jobs:
   
   deploy:
     name: Deploy artifact
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs: [test]
     steps:
       - name: Retrieve artifact
