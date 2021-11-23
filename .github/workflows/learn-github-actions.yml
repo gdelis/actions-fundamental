@@ -1,5 +1,9 @@
 name: Test
 
+outputs:
+  version:
+    description: Artifact version
+
 # Event triggers
 on:
   workflow_dispatch:
