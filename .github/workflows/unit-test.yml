@@ -1,6 +1,7 @@
 name: Run unit tests
 
 on:
+  workflow_dispatch:
   push:
     branches-ignore:
       - main
@@ -16,3 +17,17 @@ jobs:
       - name: test
         run: |
             echo "gradlew test"
+
+  example-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: zipped-bundle
+
+  display_path_content:
+    runs-on: ubuntu-latest
+    steps:
+      - name: PWD
+        run: pwd
