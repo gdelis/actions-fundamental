@@ -71,7 +71,9 @@ jobs:
     steps:
       - name: Connect to PostgreSQL "pingfed-databases/bmj-session-database/bmj-session-database/sql:/docker-entrypoint-initdb.d/"
         run: |
-            psql -h localhost -p session_user -U session_user -d session
+            sudo apt-get install postgresql-client
+            psql --version
+            psql -h localhost -p session_user -U session_user -d sessiondb
 
   # example-job:
   #   runs-on: ubuntu-latest
