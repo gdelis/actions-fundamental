@@ -1,33 +1,51 @@
-name: Run unit tests
+name: Run unit tests - Reusable
 
 on:
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      version_number: 
+        description: version of artifact
+        required: true
+        default: 1.0.0
+        type: string
+    
   push:
     branches-ignore:
       - main
       - master
 
+
 jobs:
-  build_and_test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: download code
         run: |
             echo "Download code"
+            echo "Version"
+            echo ${{ inputs.version_number }}
+
+
+  test:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
       - name: test
         run: |
             echo "gradlew test"
+  
 
-  example-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download a single artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: zipped-bundle
+  # example-job:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Download a single artifact
+  #       uses: actions/download-artifact@v2
+  #       with:
+  #         name: zipped-bundle
 
   display_path_content:
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - name: PWD
         run: pwd

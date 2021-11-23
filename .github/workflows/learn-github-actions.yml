@@ -24,6 +24,12 @@ jobs:
       - name: Install dependencies
         run: echo "install dependencies"
 
+  call_reusable_workflow:
+    needs: [build]
+    uses: ./.github/workflows/unit-test.yml@v1
+    with:
+      version_number: 1.1.1
+
   zip:
     name: Create zip file
     runs-on: ubuntu-latest
