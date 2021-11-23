@@ -64,8 +64,8 @@ jobs:
           POSTGRES_USER: session_user
           POSTGRES_PASSWORD: session_user
           POSTGRES_DB: sessiondb
-        volumes:
-          - "pingfed-databases/bmj-session-database/bmj-session-database/sql:/docker-entrypoint-initdb.d/"
+        # volumes:
+        #   - "pingfed-databases/bmj-session-database/bmj-session-database/sql:/docker-entrypoint-initdb.d/"
         # ports:
         #   - 5432:5432
     steps:
