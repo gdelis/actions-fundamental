@@ -26,7 +26,7 @@ jobs:
 
   call_reusable_workflow:
     needs: [build]
-    uses: gdelis/actions-fundamental/.github/workflows/unit-test.yml@v1
+    uses: gdelis/actions-fundamental/.github/workflows/unit-test.yml@main
     with:
       version_number: 1.1.1
 
