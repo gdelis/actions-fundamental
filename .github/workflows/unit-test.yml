@@ -54,6 +54,20 @@ jobs:
       - name: test
         run: |
             echo "gradlew test"
+
+  postgres_container:
+    runs-on: ubuntu-latest
+    services:
+      postgres: 
+        image: postgres
+        env:
+          POSTGRES_USER: session_user
+          POSTGRES_PASSWORD: session_user
+          POSTGRES_DB: sessiondb
+        volumes:
+          - "pingfed-databases/bmj-session-database/bmj-session-database/sql:/docker-entrypoint-initdb.d/"
+        # ports:
+        #   - 5432:5432
   
 
   # example-job:
