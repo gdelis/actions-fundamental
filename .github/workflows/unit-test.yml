@@ -24,6 +24,17 @@ jobs:
             echo "Download code"
             echo "Version"
             echo ${{ inputs.version_number }}
+  
+  version_validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: version 2.x
+        if: startsWith(${{ inputs.version_number }}, '2.')
+        run: echo "Version 2.x.x"
+
+      - name: version 1.x
+        if: startsWith(${{ inputs.version_number }}, '1.')
+        run: echo "Version 1.x.x"
 
 
   test:
