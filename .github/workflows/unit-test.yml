@@ -32,6 +32,12 @@ jobs:
     steps:
       - name: version 1.x
         run: echo "Version 1.x.x"
+      - name: version 1.1.x
+        if: ${{ startsWith(inputs.version_number, '1.1') }}
+        run: echo "Version 1.1.x"
+      - name: version 1.0.x
+        if: ${{ startsWith(inputs.version_number, '1.0') }}
+        run: echo "Version 1.0.x"
 
   version_2_validation:
     if: ${{ startsWith(inputs.version_number, '2.') }}
@@ -40,7 +46,6 @@ jobs:
     steps:
       - name: version 2.x
         run: echo "Version 2.x.x"
-
 
   test:
     runs-on: ubuntu-latest
