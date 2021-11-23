@@ -68,7 +68,10 @@ jobs:
           - "pingfed-databases/bmj-session-database/bmj-session-database/sql:/docker-entrypoint-initdb.d/"
         # ports:
         #   - 5432:5432
-  
+    steps:
+      - name: Connect to PostgreSQL "pingfed-databases/bmj-session-database/bmj-session-database/sql:/docker-entrypoint-initdb.d/"
+        run: |
+            psql -h localhost -p session_user -U session_user -d session
 
   # example-job:
   #   runs-on: ubuntu-latest
