@@ -1,0 +1,14 @@
+name: Run unit tests
+
+on: [push]
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: download code
+        run: |
+            echo "Download code"
+      - name: test
+        run: |
+            echo "gradlew test"
