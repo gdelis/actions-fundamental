@@ -9,16 +9,28 @@ on:
 
 jobs:
   unit-testing:
-    name: Exceute unit testing
+    name: Execute unit tests
+    uses: gdelis/actions-fundamental/.github/workflows/test.yml@main
+
+  build:
+    name: Build artifact
     runs-on: ubuntu-latest
+    needs: [ unit-testing ]
     steps:
-      - name: Retrieve code and Run unit testing
-        uses: gdelis/actions-fundamental/.github/workflows/test.yml@main
-      - name: Content of folder
+      - name: Content of path
         run: |
             pwd 
             ls -ltr
       - name: Build artifact
         run: ./gradlew build
+
+
+    # steps:
+    #   - name: Content of folder
+    #     run: |
+    #         pwd 
+    #         ls -ltr
+    #   - name: Build artifact
+    #     run: ./gradlew build
         
 
