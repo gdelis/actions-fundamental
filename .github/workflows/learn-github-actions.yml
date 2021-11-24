@@ -10,8 +10,8 @@ on:
       - reopened
       - review_requested
       - edited
-  push:
-    branches: [main, master]
+  # push:
+  #   branches: [main, master]
 
 jobs:
   build:
