@@ -1,0 +1,24 @@
+name: Build Artifact
+
+on:
+  workflow_dispatch:
+  push:
+    branches-ignore:
+      - main
+      - master 
+
+jobs:
+  unit-testing:
+    name: Exceute unit testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Retrieve code and Run unit testing
+        uses: gdelis/actions-fundamental/.github/workflows/test.yml@main
+      - name: Content of folder
+        run: |
+            pwd 
+            ls -ltr
+      - name: Build artifact
+        run: ./gradlew build
+        
+
