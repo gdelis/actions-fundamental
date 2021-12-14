@@ -69,7 +69,7 @@ jobs:
         # ports:
         #   - 5432:5432
     steps:
-      - name: Connect to PostgreSQL "pingfed-databases/bmj-session-database/bmj-session-database/sql:/docker-entrypoint-initdb.d/"
+      - name: Connect to PostgreSQL
         run: |
             # sudo apt-get install postgresql-client
             psql --version

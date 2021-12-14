@@ -3,6 +3,10 @@ name: Build and Deploy
 # Event triggers
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        required: false
+        description: version
   pull_request:
     branches: [master, main]
     types:
@@ -23,6 +27,14 @@ jobs:
 
       - name: Install dependencies
         run: echo "install dependencies"
+
+      - name: Test
+        if: ${{ inputs.version }}
+        run: echo "${{ inputs.version }}
+
+      - name: Test 2
+        if: ${{ !inputs.version }}
+        run: echo "${{ inputs.version }}
 
   call_reusable_workflow:
     needs: [build]
