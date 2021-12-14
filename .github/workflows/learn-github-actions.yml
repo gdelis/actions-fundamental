@@ -1,5 +1,4 @@
-name: Build and Deploy
-
+name: Build and Deploy (if statement)
 # Event triggers
 on:
   workflow_dispatch:
